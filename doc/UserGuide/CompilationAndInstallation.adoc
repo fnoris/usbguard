@@ -1,0 +1,53 @@
+= Compilation and Installation =
+
+== Compilation and installation from sources ==
+
+//TP: where to find upstream source tarballs
+//TP: how to compile from git repository
+//TP: compile time options
+//TP: building
+//TP: testing
+
+To compile the sources from a release tarball, you'll have to install development files for:
+
+ * link:https://github.com/ClusterLabs/libqb[libqb] (Used for local UNIX socket based IPC)
+ * link:https://github.com/google/protobuf[protobuf] (Used for IPC message (de)serialization)
+ * link:http://libsodium.org[libsodium] or link:https://www.gnupg.org/software/libgcrypt[libgcrypt] (Used for hashing)
+
+Optionally, you may want to install:
+
+ * link:https://github.com/seccomp/libseccomp[libseccomp] (Used to implement a syscall whitelist)
+ * link:https://people.redhat.com/sgrubb/libcap-ng/[libcap-ng] (Used to drop process capabilities)
+
+=== Configuring the build ===
+
+When you run the _configure_ script without any options, then the default compile-time parameter values will be used or the values will be autodetected.
+
+ $ ./configure
+ $ make
+ $ sudo make install
+
+After the sources are successfully built, you can run the test suite by executing:
+
+ $ make check
+
+=== Using sources from the upstream GIT repository ===
+
+If you want to compile sources from a cloned repository, there are aditional steps required to bootstrap the compilation.
+You'll have to run the `./autogen.sh` script which will fetch the sources (git submodules) of
+[PEGTL](https://github.com/taocpp/PEGTL/)
+and
+[Catch](https://github.com/philsquared/Catch)
+which are used in this project too.
+The script will then initialize the autoconf and automake based build system.
+
+=== Testing the build ===
+
+//TP: before you install, you should run the upstream test suite.
+//TP: what is tested by the suite, requirements
+//TP: what to do when a test fails
+
+== Installation ==
+
+//TP: intallation from upstream build system
+
